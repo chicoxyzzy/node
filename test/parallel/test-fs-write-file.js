@@ -109,3 +109,7 @@ process.on('exit', function() {
   fs.unlinkSync(filename3);
   fs.unlinkSync(filename4);
 });
+
+fs.writeFile('/path/to/file/that/does/not/exist', 'BeerJS', common.mustCall(e => {
+  assert.strictEqual(e.code, 'ENOENT');
+}));
